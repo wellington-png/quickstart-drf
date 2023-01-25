@@ -27,10 +27,13 @@ class GroupViewSet(viewsets.ModelViewSet):
 class LeadViewSet(viewsets.ModelViewSet):
     queryset = Lead.objects.all()
     serializer_class = LeadSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
     def list(self, request, *args, **kwargs):
         if request.query_params.get("hub.verify_token", "") == "5d6b2c04-8147-47b4-b64b-659cf4263487":
             print("Verified")
             return Response(int(request.query_params.get("hub.challenge", 0)), status=HTTP_200_OK)
         return Response({"success": False},status=HTTP_400_BAD_REQUEST)
+
+    def create(self, request, *args, **kwargs):
+        print("Create")
+        return Response({"success": True},status=HTTP_200_OK)

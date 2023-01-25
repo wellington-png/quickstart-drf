@@ -1,3 +1,6 @@
-from django.contrib import admin
+from django.contrib.admin import ModelAdmin, register, TabularInline
+from .models import Lead
 
-# Register your models here.
+@register(Lead)
+class LeadAdmin(ModelAdmin):
+    pass
