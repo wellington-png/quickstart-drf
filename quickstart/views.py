@@ -35,5 +35,5 @@ class LeadViewSet(viewsets.ModelViewSet):
         return Response({"success": False},status=HTTP_400_BAD_REQUEST)
 
     def create(self, request, *args, **kwargs):
-        print("Create")
+        print(request.data)
         return Response({"success": True},status=HTTP_200_OK)
