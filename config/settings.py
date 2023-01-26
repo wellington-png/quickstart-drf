@@ -24,6 +24,7 @@ SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+DRF_LOGGER_INTERVAL  =  1
 
 ALLOWED_HOSTS = ["*"]
 
