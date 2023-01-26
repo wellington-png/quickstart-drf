@@ -3,8 +3,9 @@ from rest_framework import viewsets
 from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
-from quickstart.serializers import UserSerializer, GroupSerializer, LeadSerializer
+from quickstart.serializers import UserSerializer, GroupSerializer, LeadSerializer, APILogsSerializer
 from quickstart.models import Lead
+from drf_api_logger.models import APILogsModel
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -37,3 +38,11 @@ class LeadViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         print(request.data)
         return Response({"success": True},status=HTTP_200_OK)
+
+
+class ApiLogsViewSet(viewsets.ModelViewSet):
+    queryset = APILogsModel.objects.all()
+    serializer_class = APILogsSerializer
+    
+
+    
